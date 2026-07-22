@@ -3,6 +3,11 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showExpress, setShowExpress] = useState('')
+fetch('http://localhost:3001/api/health')
+  .then(data => data.text())
+  .then(data => setShowExpress(data))
+  .catch(err => setShowExpress(err.message));
 
   return (
     <section id="center">
@@ -19,6 +24,7 @@ function App() {
       >
         Count is {count}
       </button>
+{showExpress && <p>{showExpress}</p>}
     </section>
   )
 }
