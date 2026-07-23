@@ -13,9 +13,6 @@ fetch('http://localhost:3001/api/health')
     <section id="center">
       <div>
         <h1>Get started Vite + React</h1>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-        </p>
       </div>
       <button
         type="button"
