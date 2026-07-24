@@ -54,13 +54,23 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript + Biome) and `server/` 
 
 ### BACKEND (learning priority)
 
+- middleware with Express in `server/src/middleware` for check JWT token and errors handling
+- Prisma schema in `server/src/prisma`
+- database connection in `server/src/db.ts` exports a single shared PrismaClient instance for all modules
+- error handling in `server/src/errors.ts`
+- hand validation in `server/src/validation.ts`
+
 - GET /api/health
-
-- GET /api/categories, GET /api/categories/:slug
-
-- GET /api/products, GET /api/products/:slug
-
-- POST /api/auth/register, POST /api/auth/login
+- GET /api/categories,
+- GET /api/categories/:slug
+- GET /api/products,
+- GET /api/products/:slug
+- GET /api/search, GET /api/search?q=
+- GET /api/cart,
+- GET /api/orders,
+- POST /api/orders,
+- POST /api/auth/register,
+- POST /api/auth/login
 
 Seed: ~15–30 products in 5–7 categories
 
@@ -96,12 +106,11 @@ Seed: ~15–30 products in 5–7 categories
 #### Coding conventions
 
 - **Imports:** Use absolute paths (e.g. `@/components`, `@/lib`) instead of relative (`../components`).
-- **Feature placement:** Only generic/reusable UI stays in `client/src/components/ui`.
-- **Commits:** Conventional Commits — `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `style:`.
 - **Async:** Prefer `async/await`.
 - **Code size:** Generate minimal length code.
 - **Implementation order:** Prefer this order of implementation solutions: HTML5 → JavaScript → React when applicable.
 - **Libraries:** Do not add libraries without permission.
+- **Database Prisma schema**: User, Product, Category, Order
 
 #### No time estimates
 

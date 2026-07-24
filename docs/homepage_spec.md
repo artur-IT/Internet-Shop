@@ -76,7 +76,7 @@ Każda sekcja zawiera rozwijane menu zawierające przykładowe podkategorie, kt�
 
 2. **Slider** (4 zakładki) - Komponent UI; produkty z API lub seed
 
-3. **Menu rozwijane** - Komponent UI; statyczna lista podkategorii → linki /kategoria/:slug
+3. **Menu rozwijane** - Komponent UI; statyczna lista podkategorii → linki /category/:slug
 
 4. **Promocja dnia** + 8 produktów - Lewa: 1 produkt z API; prawa: GET /products?limit=8
    - **Lewa**: 1 produkt z API;

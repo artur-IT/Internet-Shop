@@ -1,3 +1,34 @@
 ---
-alwaysApply: true
+globs: client/src/**/*.tsx, client/src/**/*.ts
+alwaysApply: false
 ---
+- one folder = component + .module.css + .test.tsx
+- custom hooks in `client/src/hooks`
+- RWD breakpoints:  mobile <768px, tablet <1024px, desktop >1024px.
+- Auth flow: key name for JWT token in localStorage: 'token'.
+- use PascalCase for components names and camelCase for other names.
+- React Router v7 routes:
+  - Home page: `/`
+  - Login page: `/login`
+  - Register page: `/register`
+  - Category page: `/category/:slug`
+  - Product page: `/product/:slug`
+  - Cart page: `/cart`
+  - Checkout page: `/checkout`
+  - Profile page: `/profile`
+  - Admin page: `/admin`
+  - Not found page: `/*`
+
+Cart structure:
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Product 1",
+      "price": 100,
+      "quantity": 1,
+      "image": "image.jpg"
+    }
+  ],
+  "total": 100
+}

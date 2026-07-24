@@ -1,0 +1,15 @@
+---
+globs: server/**/*.ts
+alwaysApply: false
+---
+
+- routes in `server/src/routes`
+- controllers in `server/src/controllers`
+- middleware with Express in `server/src/middleware` for check JWT token and errors handling
+- Prisma schema in `server/src/prisma`
+- database connection in `server/src/db.ts` exports a single shared PrismaClient instance for all modules
+- error handling in `server/src/errors.ts`
+- hand validation in `server/src/validation.ts`
+- errors format in API responses: { "error": "error message", "errorCode": "error code" }
+- secret drata are in: .env file
+- JWT token lifetime: 1 day
