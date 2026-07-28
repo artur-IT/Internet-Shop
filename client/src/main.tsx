@@ -1,7 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/Home/Home.tsx'
+import Contact from './components/Contact/Contact.tsx'
+import NotFound from './components/NotFound.tsx'
+import Product from './components/Product/Product.tsx'
+import Login from './components/Login/Login.tsx'
+import Register from './components/Register/Register.tsx'
+import Cart from './components/Cart/Cart.tsx'
+import Category from './components/Category/Category.tsx'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {
@@ -10,6 +18,17 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/category" element={<Category />} />
+      <Route path="/product" element={<Product />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    </BrowserRouter>
+  </StrictMode>
+);

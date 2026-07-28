@@ -1,0 +1,34 @@
+---
+alwaysApply: false
+---
+
+## Instrukcja dla agenta AI: dopisanie podsumowania dnia do Daily Notes (GitHub Gist)
+
+Używamy uniwersalnego skryptu, który zbiera commity i aktualizuje gist. Skrypt robi część techniczną (git + GitHub API, obsługa duplikatów i nowego tygodnia), a Ty (agent) piszesz ładne podsumowanie po polsku.
+
+Wykonaj poniższe kroki.
+
+- **Sprawdź zmienne środowiskowe** — skrypt korzysta z `GITHUB_GIST_TOKEN` i `GITHUB_DAILY_NOTES_GIST_URL` (zmienne użytkownika Windows). Jeśli ich nie ma, poinformuj mnie i przerwij.
+
+- **Zbierz dane (tryb `prepare`)** — uruchom w katalogu bieżącego repozytorium:
+  ```powershell
+  node "$env:USERPROFILE\scripts\update-daily-notes.mjs" prepare --date=YYYY-MM-DD
+  ```
+  Zwróci JSON z: `commits` (commity dnia, bez merge), `weekFile` (aktualny plik `week-N.md`), `duplicate` (czy wpis z tą datą już istnieje), `repo`.
+  - Jeśli `duplicate` to `true` — nie twórz drugiego wpisu, poinformuj mnie.
+  - Jeśli `commits` jest puste — zapytaj mnie, czy mimo to dopisać wpis.
+
+- **Napisz podsumowanie dnia** — na podstawie `commits` przygotuj wpis po polsku, wzorując się na stylu wpisów z pliku `week-2.md`. Nie umieszczaj noty `Merge #PR_NUMBER` ani nazw gałęzi. Struktura wpisu:
+  - nagłówek z datą: `## YYYY-MM-DD`,
+  - krótkie podsumowanie dnia (na wzór istniejących wpisów),
+  - na końcu **bardzo krótką sekcję** „co warto zapamiętać w kontekście nauki frontendu" (1–2 zdania) i wyróżnij ją kolorem.
+
+- **Zapisz wpis do pliku tymczasowego** — np. `daily-entry.md` w katalogu repo (plik roboczy, nie commituj go).
+
+- **Opublikuj (tryb `publish`)** — uruchom:
+  ```powershell
+  node "$env:USERPROFILE\scripts\update-daily-notes.mjs" publish --entry=daily-entry.md --date=YYYY-MM-DD
+  ```
+  Skrypt sam dopisze wpis do właściwego pliku tygodnia, pominie duplikat i w razie potrzeby utworzy nowy `week-N.md` dla nowego tygodnia, a następnie wykona `PATCH /gists/:id`.
+
+- **Posprzątaj** — usuń plik tymczasowy `daily-entry.md`.

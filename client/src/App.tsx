@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [showExpress, setShowExpress] = useState('')
 fetch('http://localhost:3001/api/health')
   .then(data => data.text())
@@ -14,14 +13,7 @@ fetch('http://localhost:3001/api/health')
       <div>
         <h1>Get started Vite + React</h1>
       </div>
-      <button
-        type="button"
-        className="counter"
-        onClick={() => setCount((count) => count + 1)}
-      >
-        Count is {count}
-      </button>
-{showExpress && <p>{showExpress}</p>}
+      {showExpress && <p>{showExpress}</p>}
     </section>
   )
 }
