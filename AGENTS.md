@@ -23,8 +23,8 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript + Biome) and `server/` 
 - **Authentication**: bcrypt + JWT in localStorage (simplified)
 - **Hosting**: now Local only, later Vercel
 - **Package manager**: pnpm
-- **Linter**: Biome
-- **Formatter**: Biome
+- **Linter**: ESLnt
+- **Formatter**: Prettier
 
 ---
 

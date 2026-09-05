@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './global.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/Home/Home.tsx'
 import Contact from './components/Contact/Contact.tsx'
@@ -21,8 +21,8 @@ createRoot(rootElement).render(
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/category" element={<Category />} />
-      <Route path="/product" element={<Product />} />
+      <Route path="/category/:slug" element={<Category />} />
+      <Route path="/product/:slug" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
