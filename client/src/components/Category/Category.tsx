@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import NotFound from "../NotFound";
 
 export default function Category() {
   const { slug } = useParams();
@@ -14,26 +15,22 @@ export default function Category() {
         }
         return res.text();
       })
+      .then(res => JSON.parse(res))
       .then(data => {
-        setCategory({ name: data, slug: slug || '' });
+        setCategory(data);
       })
       .catch(err => {
         setError(err.message);
       });
   }, [slug]);
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!category) {
-    return <div>Loading...</div>;
-  }
+  if (error) return <div>backend says: {error}  <NotFound /></div>;
+  if (!category) return <div>Loading...</div>;
 
   return (
-    <>
-      <div>Kategoria: {category.name}</div>
-      <div>Slug: {category.slug}</div>
-    </>
+    <div>
+      <p>Kategoria: {category.name}</p>
+      <p>Slug: {category.slug}</p>
+    </ div>
   );
 }
