@@ -3,10 +3,10 @@
 // even if the product data changes later in the catalog)
 export interface CartItem {
   productId: string; // Product.id from Prisma
-  slug: string;       // for linking back to the product page
+  slug: string; // for linking back to the product page
   name: string;
-  price: number;      // price snapshot at the time of adding
-  image: string;      // thumbnail for the cart preview
+  price: number; // price snapshot at the time of adding
+  image: string; // thumbnail for the cart preview
   quantity: number;
 }
 

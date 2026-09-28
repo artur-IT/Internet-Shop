@@ -1,4 +1,3 @@
-
 ## DESIGN and HOME PAGE STRUCTURE
 
 Strona główna będzie wyglądała w następujący sposób, zaczynając od góry:

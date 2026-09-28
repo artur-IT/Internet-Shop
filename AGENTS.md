@@ -10,7 +10,7 @@ Full specifications of the home page and MVP are in [homepage_spec.md](docs/home
 
 ### TECH STACK
 
-Monorepo with: `client/` = (Vite + React 19 + TypeScript + Biome) and `server/` = (Express + TypeScript)
+Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Express + TypeScript)
 
 - **Frontend**: Vite, React 19.2, TypeScript 5.7, React Router 7
 - **Backend**: Node.js, Express, TypeScript 5.7, cors, dotenv, bcrypt, jsonwebtoken

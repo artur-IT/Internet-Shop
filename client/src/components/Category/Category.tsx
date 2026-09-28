@@ -1,30 +1,32 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import NotFound from "../NotFound";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import NotFound from '../NotFound';
 
 export default function Category() {
   const { slug } = useParams();
-  const [category, setCategory] = useState<{ name: string, slug: string } | null>(null);
+  const [category, setCategory] = useState<{
+    name: string;
+    slug: string;
+  } | null>(null);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/category/${slug}`)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Category not found');
-        }
+      .then((res) => {
+        if (!res.ok) throw new Error('Category not found');
         return res.text();
       })
-      .then(res => JSON.parse(res))
-      .then(data => {
-        setCategory(data);
-      })
+      .then((res) => JSON.parse(res))
+      .then((data) => setCategory(data))
+      .catch((err) => {
+        if (err) return <NotFound info="Nie ma takiej kategorii." />;
+      });
   }, [slug]);
 
-  if (!category) return <NotFound info="Nie ma takiej kategorii." />
+  if (!category) return null;
 
   return (
     <div>
       <p>Kategoria: {category.name}</p>
-    </ div>
+    </div>
   );
 }

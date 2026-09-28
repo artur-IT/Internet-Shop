@@ -2,6 +2,11 @@
   "name": "compix",
   "private": true,
   "scripts": {
-    "dev": "pnpm --parallel -r dev"
+    "dev": "pnpm --parallel -r dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9"
   }
 }

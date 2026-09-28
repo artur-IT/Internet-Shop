@@ -1,13 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-
-// Fake "database" – later replace with Prisma
-const categories = [
-  { id: 1, name: 'Monitory', slug: 'monitors' },
-  { id: 2, name: 'Laptopy', slug: 'laptops' },
-  { id: 3, name: 'Smartfony', slug: 'smartphones' },
-  { id: 4, name: 'Gry', slug: 'games' },
-];
+import { categories } from '../prisma/seed';
 
 const app = express();
 require('dotenv').config();
