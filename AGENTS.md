@@ -78,11 +78,8 @@ Seed: ~15–30 products in 5–7 categories
 
 ### SETUP
 
-- run server: cd server && `pnpm dev`
-- run client: cd client && `pnpm dev`
+- run server and client: `pnpm dev`
 - install dependencies: `pnpm install`
-- run Biome: `pnpm biome check`
-- run Biome with fix: `pnpm biome check --write .`
 
 ---
 

@@ -6,6 +6,7 @@ const categories = [
   { id: 1, name: 'Monitory', slug: 'monitors' },
   { id: 2, name: 'Laptopy', slug: 'laptops' },
   { id: 3, name: 'Smartfony', slug: 'smartphones' },
+  { id: 4, name: 'Gry', slug: 'games' },
 ];
 
 const app = express();
@@ -20,11 +21,11 @@ app.get('/api/health', (req, res) => {
   res.send('Ok, server Express is running');
 });
 
-// app.get('/api/categories', (req, res) => {
-//   res.json(categories);
-// });
+app.get('/api/category', (req, res) => {
+  res.json(categories);
+});
 
-app.get('/api/categories/:slug', (req, res) => {
+app.get('/api/category/:slug', (req, res) => {
   const category = categories.find((c) => c.slug === req.params.slug);
 
   if (!category) {

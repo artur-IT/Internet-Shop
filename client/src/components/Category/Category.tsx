@@ -5,10 +5,9 @@ import NotFound from "../NotFound";
 export default function Category() {
   const { slug } = useParams();
   const [category, setCategory] = useState<{ name: string, slug: string } | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/categories/${slug}`)
+    fetch(`http://localhost:3001/api/category/${slug}`)
       .then(res => {
         if (!res.ok) {
           throw new Error('Category not found');
@@ -19,18 +18,13 @@ export default function Category() {
       .then(data => {
         setCategory(data);
       })
-      .catch(err => {
-        setError(err.message);
-      });
   }, [slug]);
 
-  if (error) return <div>backend says: {error}  <NotFound /></div>;
-  if (!category) return <div>Loading...</div>;
+  if (!category) return <NotFound info="Nie ma takiej kategorii." />
 
   return (
     <div>
       <p>Kategoria: {category.name}</p>
-      <p>Slug: {category.slug}</p>
     </ div>
   );
 }

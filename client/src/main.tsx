@@ -19,16 +19,16 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/category/:slug" element={<Category />} />
-      <Route path="/product/:slug" element={<Product />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:slug" element={<Category />} />
+        <Route path="/product/:slug" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound info="Pod tym adresem nie ma żadnej strony." />} />
+      </Routes>
     </BrowserRouter>
   </StrictMode>
 );
