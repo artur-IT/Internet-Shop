@@ -61,8 +61,8 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Expre
 - hand validation in `server/src/validation.ts`
 
 - GET /api/health
-- GET /api/categories,
-- GET /api/categories/:slug
+- GET /api/category,
+- GET /api/category/:slug
 - GET /api/products,
 - GET /api/products/:slug
 - GET /api/search, GET /api/search?q=

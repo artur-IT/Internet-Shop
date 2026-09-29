@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import categoryRoutes from './routes/category.routes';
 import { categories } from '../prisma/seed';
 
 const app = express();
@@ -14,9 +15,11 @@ app.get('/api/health', (req, res) => {
   res.send('Ok, server Express is running');
 });
 
-app.get('/api/category', (req, res) => {
-  res.json(categories);
-});
+// app.get('/api/category', (req, res) => {
+//   res.json(categories);
+// });
+app.use('/api/category', categoryRoutes);
+app.get('/api/category/:slug', categoryRoutes);
 
 app.get('/api/category/:slug', (req, res) => {
   const category = categories.find((c) => c.slug === req.params.slug);

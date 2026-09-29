@@ -10,6 +10,7 @@ import Login from './components/Login/Login.tsx';
 import Register from './components/Register/Register.tsx';
 import Cart from './components/Cart/Cart.tsx';
 import Category from './components/Category/Category.tsx';
+import About from './components/About/About.tsx'
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -22,10 +23,11 @@ createRoot(rootElement).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category/:slug" element={<Category />} />
-        <Route path="/product/:slug" element={<Product />} />
+        <Route path="/products/:slug" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="*"
