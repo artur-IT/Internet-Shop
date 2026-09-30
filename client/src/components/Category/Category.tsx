@@ -16,13 +16,10 @@ export default function Category() {
         return res.text();
       })
       .then((res) => JSON.parse(res))
-      .then((data) => setCategory(data))
-      .catch((err) => {
-        if (err) return <NotFound info="Nie ma takiej kategorii." />;
-      });
+      .then((data) => { setCategory(data) })
   }, [slug]);
 
-  if (!category) return null;
+  if (!category) return <NotFound info="Nie ma takiej kategorii." />;
 
   return (
     <div>
