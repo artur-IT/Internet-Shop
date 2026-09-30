@@ -21,16 +21,16 @@ app.get('/api/health', (req, res) => {
 app.use('/api/category', categoryRoutes);
 app.get('/api/category/:slug', categoryRoutes);
 
-app.get('/api/category/:slug', (req, res) => {
-  const category = categories.find((c) => c.slug === req.params.slug);
+// app.get('/api/category/:slug', (req, res) => {
+//   const category = categories.find((c) => c.slug === req.params.slug);
 
-  if (!category) {
-    res.status(404).json({ error: 'Category not found' });
-    return;
-  }
+//   if (!category) {
+//     res.status(404).json({ error: 'Category not found' });
+//     return;
+//   }
 
-  res.json(category);
-});
+//   res.json(category);
+// });
 // app.get('/api/products', (req, res) => {
 //   res.send('Products');
 // });

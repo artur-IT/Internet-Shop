@@ -23,7 +23,7 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Expre
 - **Authentication**: bcrypt + JWT in localStorage (simplified)
 - **Hosting**: now Local only, later Vercel
 - **Package manager**: pnpm
-- **Linter**: ESLnt
+- **Linter**: ESLint
 - **Formatter**: Prettier
 
 ---
