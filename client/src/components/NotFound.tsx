@@ -20,11 +20,10 @@ export default function NotFound({ info }: { info: string }) {
 
   return (
     <div>
-      <h2>Ups, coś poszło nie tak!</h2>
-      <p>{info}</p>
-      <div>
+      <p>Ups, {info}</p>
+      <p>
         Wracamy na stronę główną za <span ref={message}>{count}</span> sekund.
-      </div>
+      </p>
     </div>
   );
 }

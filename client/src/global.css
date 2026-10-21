@@ -19,3 +19,18 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+a {
+  padding: 2px 5px;
+
+  text-decoration: none;
+}
+
+a:hover {
+  color: blueviolet;
+  background-color: aqua;
+}
+
+a:visited {
+  color: red;
+}

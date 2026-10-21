@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import categoryRoutes from './routes/category.routes';
+import productsRoutes from './routes/products.routes';
 
 const app = express();
 require('dotenv').config();
@@ -19,6 +20,9 @@ app.listen(serverPort, () => {
 
 app.use('/api/category', categoryRoutes);
 app.get('/api/category/:slug', categoryRoutes);
+
+// app.use('/api/category/:slug', productsRoutes);
+// app.get('/api/category/:slug/', productsRoutes);
 
 // app.get('/api/products', (req, res) => {
 //   res.send('Products');

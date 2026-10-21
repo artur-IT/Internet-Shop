@@ -4,6 +4,7 @@ import NotFound from '../NotFound';
 
 export default function Category() {
   const { slug } = useParams();
+  const [error, setError] = useState<boolean>(false);
   const [category, setCategory] = useState<{
     name: string;
     slug: string;
@@ -13,13 +14,14 @@ export default function Category() {
     fetch(`http://localhost:3001/api/category/${slug}`)
       .then((res) => {
         if (!res.ok) throw new Error('Category not found');
-        return res.text();
+        return res.json();
       })
-      .then((res) => JSON.parse(res))
-      .then((data) => { setCategory(data) })
+      .then((data) => setCategory(data))
+      .catch(err => { setError(true); console.log(err); })
   }, [slug]);
 
-  if (!category) return <NotFound info="Nie ma takiej kategorii." />;
+  if (error) return <NotFound info="Nie ma takiej kategorii." />;
+  if (!category) return 'Loading...';
 
   return (
     <div>
