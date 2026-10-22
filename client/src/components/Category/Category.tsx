@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NotFound from '../NotFound';
+import Home from '../Home/Home'
 
 export default function Category() {
   const { slug } = useParams();
@@ -8,6 +9,14 @@ export default function Category() {
   const [category, setCategory] = useState<{
     name: string;
     slug: string;
+    products: {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+      price: number;
+      image: string;
+    }[];
   } | null>(null);
 
   useEffect(() => {
@@ -25,7 +34,15 @@ export default function Category() {
 
   return (
     <div>
+      {/* <Home /> */}
       <p>Kategoria: {category.name}</p>
+      <div>
+        {category?.products?.map((product) => (
+          <div key={product.id}>
+            <h3>{product.name}</h3>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
