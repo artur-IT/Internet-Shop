@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NotFound from '../NotFound';
-import Home from '../Home/Home'
+import Product from '../Product/Product';
 
 export default function Category() {
   const { slug } = useParams();
@@ -33,16 +33,17 @@ export default function Category() {
   if (!category) return 'Loading...';
 
   return (
-    <div>
-      {/* <Home /> */}
-      <p>Kategoria: {category.name}</p>
+    <div className='category'>
       <div>
+        <p>Kategoria: {category.name}</p>
+      </div>
+      <div className='products_list'>
         {category?.products?.map((product) => (
-          <div key={product.id}>
-            <h3>{product.name}</h3>
-          </div>
+          <Product key={product.id} product={product} />
         ))}
       </div>
+
+
     </div>
   );
 }

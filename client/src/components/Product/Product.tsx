@@ -1,7 +1,22 @@
-export default function Product() {
+type Props = {
+  key: string
+  product: {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+  }
+}
+
+export default function Product({ product }: Props) {
+
   return (
-    <div>
-      <h1>Product</h1>
-    </div>
+    <ul className='product' id={product.id}>
+      <li>{product.name}</li>
+      <li>{product.price} zł</li>
+      <li>{product.image}</li>
+      <li>{product.description}</li>
+    </ul>
   );
 }

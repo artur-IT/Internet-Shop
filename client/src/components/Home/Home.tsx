@@ -1,21 +1,14 @@
 
-import Main from '../Main/Main'
-import About from '../About/About'
 import Header from "../Header/Header"
 import Footer from '../Footer/Footer';
+import { Outlet } from 'react-router-dom'
 
 export default function Home() {
 
   return (
     <div>
       <Header />
-
-      <main>
-        <Main>
-          <About />
-
-        </Main>
-      </main>
+      <Outlet />
       <Footer />
     </div>
   );

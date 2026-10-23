@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home.tsx';
 import Contact from './components/Contact/Contact.tsx';
 import NotFound from './components/NotFound.tsx';
-import Product from './components/Product/Product.tsx';
 import Login from './components/Login/Login.tsx';
 import Register from './components/Register/Register.tsx';
 import Cart from './components/Cart/Cart.tsx';
@@ -21,9 +20,9 @@ createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:slug" element={<Category />} />
-        <Route path="/products/:slug" element={<Product />} />
+        <Route path="/" element={<Home />} >
+          <Route path="/category/:slug" element={<Category />} />
+        </Route>
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -19,9 +19,28 @@ div {
   border: 1px solid green
 }
 
+div.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+div.products_list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 ul {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+ul.product {
+  padding: 15px;
+  background-color: aquamarine;
 }
 
 a {
