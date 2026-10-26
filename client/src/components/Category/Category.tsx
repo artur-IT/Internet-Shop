@@ -42,8 +42,6 @@ export default function Category() {
           <Product key={product.id} product={product} />
         ))}
       </div>
-
-
     </div>
   );
 }

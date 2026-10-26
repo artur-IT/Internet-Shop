@@ -15,6 +15,10 @@ body {
   padding: 0;
 }
 
+main {
+  height: auto;
+}
+
 div {
   border: 1px solid green
 }
@@ -24,12 +28,14 @@ div.category {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+
 }
 
 div.products_list {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 6px;
 }
 
 ul {
@@ -39,8 +45,9 @@ ul {
 }
 
 ul.product {
-  padding: 15px;
+  width: 360px;
   background-color: aquamarine;
+  border-radius: 16px;
 }
 
 a {

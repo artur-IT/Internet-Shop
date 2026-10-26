@@ -18,12 +18,20 @@ export default function Header() {
 
   return (
     <header>
+      <div>
+        <Link to={'/cart'}>Koszyk</Link>
+        <Link to={'/login'}>Zaloguj</Link>
+        <Link to={'/contact'}>Kontakt</Link>
+        <Link to={'/about'}>O nas</Link>
+      </div>
       <h1>Home</h1>
-      {categoryList.length !== 0 ? categoryList.map((item: any) =>
-        <Link to={`/category/${item.slug}`} key={item.id}>
-          {item.name}
-        </Link>
-      ) : <p>No categories found</p>}
+      <div> Kategorie:
+        {categoryList.length !== 0 ? categoryList.map((item: any) =>
+          <Link to={`/category/${item.slug}`} key={item.id}>
+            {item.name}
+          </Link>
+        ) : <p>No categories found</p>}
+      </div>
     </header>
   )
 }

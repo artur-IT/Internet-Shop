@@ -22,12 +22,12 @@ createRoot(rootElement).render(
       <Routes>
         <Route path="/" element={<Home />} >
           <Route path="/category/:slug" element={<Category />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route
           path="*"
           element={<NotFound info="Pod tym adresem nie ma żadnej strony." />}
