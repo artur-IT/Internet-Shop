@@ -11,6 +11,7 @@ import Cart from './components/Cart/Cart.tsx';
 import Category from './components/Category/Category.tsx';
 import About from './components/About/About.tsx'
 import ProductsList from './components/ProductsList/ProductsList.tsx';
+import Product from './components/Product/Product.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -24,6 +25,7 @@ createRoot(rootElement).render(
         <Route path="/" element={<Home />} >
           <Route path="/category/:slug" element={<Category />} />
           <Route path="/category/:categorySlug/:subSlug" element={<ProductsList />} />
+          <Route path="/category/:categorySlug/:subSlug/:prodSlug" element={<Product />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />

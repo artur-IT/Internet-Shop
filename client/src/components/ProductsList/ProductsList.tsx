@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 type Subcategory = {
   name: string;
@@ -13,6 +13,8 @@ export default function ProductsList() {
   const { categorySlug, subSlug } = useParams();
   const [error, setError] = useState<boolean>(false);
   const [subcategory, setSubcategory] = useState<Subcategory | null>(null);
+
+  const productsList = () => subcategory?.products?.map(el => <Link to={`/category/${categorySlug}/${subSlug}/${el.id}`} key={el.id}>{el.name}</Link>)
 
   useEffect(() => {
     if (!categorySlug || !subSlug) return;
@@ -30,7 +32,7 @@ export default function ProductsList() {
   return (
     <>
       <h1>{subcategory?.name}</h1>
-      {!error ? subcategory?.products?.map(el => <p key={el.id}>{el.name}</p>) : <p>{error}</p>}
+      {!error ? productsList() : <p>{error}</p>}
     </>
   )
 }

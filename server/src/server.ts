@@ -16,7 +16,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/category', categoryRoutes);
-app.use('/api/products', productsRoutes);
+app.use('/api/product', productsRoutes);
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

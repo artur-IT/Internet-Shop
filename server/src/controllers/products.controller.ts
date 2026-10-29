@@ -2,25 +2,31 @@ import type {Request, Response} from 'express';
 import {categories} from '../../prisma/seed2';
 
 export function getProducts(_req: Request, res: Response) {
-  const productList = categories.map(category => category.subcategories);
-  if (!productList) {
+  const productList = categories.flatMap(category =>
+    category.subcategories.flatMap(subcategory => subcategory.products),
+  );
+
+  if (productList.length === 0) {
     res.status(404).json({error: "You don't have any products"});
     return;
   }
-  console.log('get Products z controller: ', productList);
+
   return res.json(productList);
 }
 
+// Find one product by id across all categories/subcategories
 export function getProductsBySlug(req: Request, res: Response) {
-  const products = categories.find(
-    category =>
-      category.subcategories.map(item => item.slug) === req.params.slug,
-  )?.subcategories;
+  const productId = req.params.slug;
 
-  console.log('get Products BY SLUG z controller: ', products);
-  if (!products) {
-    res.status(404).json({error: 'This product not found'});
-    return;
+  for (const category of categories) {
+    for (const subcategory of category.subcategories) {
+      const product = subcategory.products.find(item => item.id === productId);
+      if (product) {
+        res.json(product);
+        return;
+      }
+    }
   }
-  res.json(products);
+
+  res.status(404).json({error: 'This product not found'});
 }
