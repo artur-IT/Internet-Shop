@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NotFound from '../NotFound';
-import Product from '../Product/Product';
 
 export default function Category() {
   const { slug } = useParams();
@@ -9,14 +8,21 @@ export default function Category() {
   const [category, setCategory] = useState<{
     name: string;
     slug: string;
-    products: {
-      id: string;
-      name: string;
-      slug: string;
-      description: string;
-      price: number;
-      image: string;
-    }[];
+    subcategories: [
+      {
+        id: string;
+        name: string;
+        slug: string;
+        products: {
+          id: string;
+          name: string;
+          slug: string;
+          description: string;
+          price: number;
+          image: string;
+        }[];
+      }
+    ]
   } | null>(null);
 
   useEffect(() => {
@@ -37,10 +43,8 @@ export default function Category() {
       <div>
         <p>Kategoria: {category.name}</p>
       </div>
-      <div className='products_list'>
-        {category?.products?.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
+      <div className='category_menu'>
+        {category?.subcategories?.map((cat) => <Link to={`/category/${category.slug}/${cat.slug}`} key={cat.id}> {cat.name} </Link>)}
       </div>
     </div>
   );

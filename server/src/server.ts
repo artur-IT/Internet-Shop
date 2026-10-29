@@ -9,24 +9,15 @@ require('dotenv').config();
 const serverPort = process.env.SERVER_PORT;
 const clientUrl = process.env.CLIENT_URL;
 
-app.use(cors({ origin: `${clientUrl}` }));
+app.use(cors({origin: `${clientUrl}`}));
 
 app.get('/api/health', (req, res) => {
   res.send('Ok, server Express is running');
 });
+
+app.use('/api/category', categoryRoutes);
+app.use('/api/products', productsRoutes);
+
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);
 });
-
-app.use('/api/category', categoryRoutes);
-app.get('/api/category/:slug', categoryRoutes);
-
-// app.use('/api/category/:slug', productsRoutes);
-// app.get('/api/category/:slug/', productsRoutes);
-
-// app.get('/api/products', (req, res) => {
-//   res.send('Products');
-// });
-// app.get('/api/products/:slug', (req, res) => {
-//   res.send(`Product: ${req.params.slug}`);
-// });

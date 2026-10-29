@@ -31,7 +31,7 @@ div.category {
 
 }
 
-div.products_list {
+div.category_menu {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

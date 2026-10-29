@@ -17,7 +17,9 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Expre
 - **Styling**: CSS modules + global.css
 - **Forms**: React Hook Form (built-in validation)
 - **Database**: PostgreSQL + Prisma (minimal schema + seed)
-- **Data**: TanStack Query (only GET products/categories)
+
+<!-- - **Data**: TanStack Query (only GET products/categories) -->
+
 - **Testing**: Vitest - Unit tests for key components, React Testing Library - UI tests for components
 - **State Management**: React Context
 - **Authentication**: bcrypt + JWT in localStorage (simplified)
