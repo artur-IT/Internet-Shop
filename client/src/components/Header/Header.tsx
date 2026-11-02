@@ -14,7 +14,8 @@ export default function Header() {
       .then((data) => setCategory(data))
   }, []);
 
-  if (!categoryList) return null;
+  if (!categoryList) return <p>Wczytywanie...</p>;
+  if (categoryList.length === 0) return <p>Brak kategorii</p>;
 
   return (
     <header>
@@ -25,12 +26,12 @@ export default function Header() {
         <Link to={'/about'}>O nas</Link>
       </div>
       <h1>Home</h1>
-      <div> Kategorie:
-        {categoryList.length !== 0 ? categoryList.map((item: any) =>
+      <div>
+        {categoryList.map((item: any) =>
           <Link to={`/category/${item.slug}`} key={item.id}>
             {item.name}
           </Link>
-        ) : <p>No categories found</p>}
+        )}
       </div>
     </header>
   )

@@ -14,7 +14,7 @@ export default function ProductsList() {
   const [error, setError] = useState<boolean>(false);
   const [subcategory, setSubcategory] = useState<Subcategory | null>(null);
 
-  const productsList = () => subcategory?.products?.map(el => <Link to={`/category/${categorySlug}/${subSlug}/${el.id}`} key={el.id}>{el.name}</Link>)
+  const productsList = () => subcategory?.products?.map(el => <li key={el.id}><Link to={`/category/${categorySlug}/${subSlug}/${el.id}`} key={el.id}>{el.name}</Link></li>)
 
   useEffect(() => {
     if (!categorySlug || !subSlug) return;
@@ -29,10 +29,15 @@ export default function ProductsList() {
   }, [categorySlug, subSlug]
   )
 
+  if (error) return <p>Błąd: {error}</p>;
+  if (!error && !subcategory) return <p>Wczytywanie...</p>;
+
   return (
-    <>
+    <div className="product_list">
       <h1>{subcategory?.name}</h1>
-      {!error ? productsList() : <p>{error}</p>}
-    </>
+      <ul>
+        {productsList()}
+      </ul>
+    </div>
   )
 }

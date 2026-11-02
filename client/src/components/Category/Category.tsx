@@ -36,12 +36,12 @@ export default function Category() {
   }, [slug]);
 
   if (error) return <NotFound info="Nie ma takiej kategorii." />;
-  if (!category) return 'Loading...';
+  if (!error && !category) return <p>Wczytywanie...</p>;
 
   return (
     <div className='category'>
       <div>
-        <p>Kategoria: {category.name}</p>
+        <p>{category?.name}</p>
       </div>
       <div className='category_menu'>
         {category?.subcategories?.map((cat) => <Link to={`/category/${category.slug}/${cat.slug}`} key={cat.id}> {cat.name} </Link>)}

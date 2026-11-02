@@ -16,6 +16,10 @@ body {
 }
 
 main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 10px 0;
   height: auto;
 }
 
@@ -26,7 +30,7 @@ div {
 div.category {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: stretch;
 
 }
@@ -38,6 +42,11 @@ div.category_menu {
   gap: 6px;
 }
 
+div.product_list {
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -45,7 +54,9 @@ ul {
 }
 
 ul.product {
+  padding: 10px;
   width: 360px;
+  height: 100%;
   background-color: aquamarine;
   border-radius: 16px;
 }

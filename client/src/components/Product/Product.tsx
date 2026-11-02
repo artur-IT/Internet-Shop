@@ -32,14 +32,14 @@ export default function Product() {
   }, [prodSlug]);
 
   if (error) return <NotFound info="Nie ma takiego produktu." />;
-  if (!product) return 'Loading...';
+  if (!error && !product) return <p>Wczytywanie...</p>;
 
   return (
-    <ul className='product' id={product.id}>
-      <li>{product.name}</li>
-      <li>Cena: {product.price} zł</li>
-      <li>Ilość: {product.stock} szt.</li>
-      <li>{product.description}</li>
+    <ul className='product' id={product?.id}>
+      <li>{product?.name}</li>
+      <li>Cena: {product?.price} zł</li>
+      <li>Ilość: {product?.stock} szt.</li>
+      <li>{product?.description}</li>
     </ul>
   );
 }
