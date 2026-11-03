@@ -56,6 +56,8 @@ div.filtered_products {
   display: flex;
   flex-direction: column;
   position: absolute;
+  max-height: 50vh;
+  overflow-y: auto;
   background-color: #ddd;
   text-align: left;
 }
