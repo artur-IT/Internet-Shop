@@ -47,6 +47,27 @@ div.product_list {
   flex-direction: column;
 }
 
+div.search {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+div.filtered_products {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #ddd;
+  text-align: left;
+}
+
+div.filtered_products a {
+  font-size: smaller;
+}
+
+.search_input {
+  padding: 5px;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -62,8 +83,7 @@ ul.product {
 }
 
 a {
-  padding: 2px 5px;
-
+  padding: 0px 5px;
   text-decoration: none;
 }
 

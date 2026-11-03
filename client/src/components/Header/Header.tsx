@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Search from '../Search/Search';
 
 export default function Header() {
   const [categoryList, setCategory] = useState([]);
@@ -32,7 +33,9 @@ export default function Header() {
             {item.name}
           </Link>
         )}
+        <Search />
       </div>
+
     </header>
   )
 }
