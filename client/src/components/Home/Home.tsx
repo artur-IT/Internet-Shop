@@ -1,16 +1,20 @@
-import { Link } from 'react-router-dom';
-import { categories } from '../../../../server/prisma/seed';
+
+import Header from "../Header/Header"
+import Footer from '../Footer/Footer';
+import { Outlet, useLocation } from 'react-router-dom'
 
 export default function Home() {
-  const categoryList = categories.map((item) => (
-    <Link to={`/category/${item.slug}`} key={item.id}>
-      {item.name}
-    </Link>
-  ));
+  const location = useLocation()
+  const isHome = location.pathname === '/';
+
   return (
-    <div>
-      <h1>Home</h1>
-      <ul>{categoryList}</ul>
-    </div>
+    <>
+      <Header />
+      <main>
+        {isHome ? <p>Witaj na stronie sklepu komputerowego</p> : ""}
+        <Outlet />  {/* render routing child from main.tsx */}
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,32 +1,51 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import NotFound from '../NotFound';
 
 export default function Category() {
   const { slug } = useParams();
+  const [error, setError] = useState<boolean>(false);
   const [category, setCategory] = useState<{
     name: string;
     slug: string;
+    subcategories: [
+      {
+        id: string;
+        name: string;
+        slug: string;
+        products: {
+          id: string;
+          name: string;
+          slug: string;
+          description: string;
+          price: number;
+          image: string;
+        }[];
+      }
+    ]
   } | null>(null);
 
   useEffect(() => {
     fetch(`http://localhost:3001/api/category/${slug}`)
       .then((res) => {
         if (!res.ok) throw new Error('Category not found');
-        return res.text();
+        return res.json();
       })
-      .then((res) => JSON.parse(res))
       .then((data) => setCategory(data))
-      .catch((err) => {
-        if (err) return <NotFound info="Nie ma takiej kategorii." />;
-      });
+      .catch(err => { setError(true); console.log(err); })
   }, [slug]);
 
-  if (!category) return null;
+  if (error) return <NotFound info="Nie ma takiej kategorii." />;
+  if (!error && !category) return <p>Wczytywanie...</p>;
 
   return (
-    <div>
-      <p>Kategoria: {category.name}</p>
+    <div className='category'>
+      <div>
+        <p>{category?.name}</p>
+      </div>
+      <div className='category_menu'>
+        {category?.subcategories?.map((cat) => <Link to={`/category/${category.slug}/${cat.slug}`} key={cat.id}> {cat.name} </Link>)}
+      </div>
     </div>
   );
 }

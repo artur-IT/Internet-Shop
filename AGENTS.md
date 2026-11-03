@@ -17,13 +17,15 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Expre
 - **Styling**: CSS modules + global.css
 - **Forms**: React Hook Form (built-in validation)
 - **Database**: PostgreSQL + Prisma (minimal schema + seed)
-- **Data**: TanStack Query (only GET products/categories)
+
+<!-- - **Data**: TanStack Query (only GET products/categories) -->
+
 - **Testing**: Vitest - Unit tests for key components, React Testing Library - UI tests for components
 - **State Management**: React Context
 - **Authentication**: bcrypt + JWT in localStorage (simplified)
 - **Hosting**: now Local only, later Vercel
 - **Package manager**: pnpm
-- **Linter**: ESLnt
+- **Linter**: ESLint
 - **Formatter**: Prettier
 
 ---
@@ -61,8 +63,8 @@ Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Expre
 - hand validation in `server/src/validation.ts`
 
 - GET /api/health
-- GET /api/categories,
-- GET /api/categories/:slug
+- GET /api/category,
+- GET /api/category/:slug
 - GET /api/products,
 - GET /api/products/:slug
 - GET /api/search, GET /api/search?q=
