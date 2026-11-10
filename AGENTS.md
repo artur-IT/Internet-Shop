@@ -8,6 +8,8 @@ Strona będzie dostosowana do różnych urządzeń, od desktopu po tablet i tele
 
 Full specifications of the home page and MVP are in [homepage_spec.md](docs/homepage_spec.md)
 
+Always answer in Polish language!
+
 ### TECH STACK
 
 Monorepo with: `client/` = (Vite + React 19 + TypeScript) and `server/` = (Express + TypeScript)
