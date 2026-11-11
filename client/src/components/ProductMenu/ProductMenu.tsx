@@ -10,7 +10,6 @@ type Props = {
 }
 
 export default function ProductMenu({ id, catSlugs, catLink, subcatLink, subcatSlugs }: Props) {
-
   return (
     <li className={styles.menu__item}>
       <a href="#" className={styles.menu__link}>{catLink}</a>

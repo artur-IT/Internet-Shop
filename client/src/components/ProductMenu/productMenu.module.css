@@ -1,6 +1,6 @@
 .menu__list {
   display: flex;
-  /* poziome ułożenie kategorii */
+  align-items: center;
   list-style: none;
   max-width: 960px;
   margin: 0 auto;
@@ -8,9 +8,7 @@
 
 .menu__item {
   position: relative;
-  /* punkt odniesienia dla podmenu */
   flex: 1;
-  /* równa szerokość kategorii */
 }
 
 .menu__link {
@@ -31,26 +29,22 @@
   background: #f5f8ff;
 }
 
-/* ===== Podmenu — ukryte domyślnie ===== */
 .submenu {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 180px;
+  min-width: 190px;
   list-style: none;
   background: #fff;
   border: 1px solid #e5e5e5;
   border-top: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-
-  /* ukrycie bez display:none — pozwala animować */
   opacity: 0;
   visibility: hidden;
   transform: translateY(6px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 
-/* ===== Pokazanie po najechaniu myszką (lub fokusie klawiatury) ===== */
 .menu__item:hover>.submenu,
 .menu__item:focus-within>.submenu {
   opacity: 1;
@@ -72,21 +66,18 @@
   color: #1a73e8;
   background: #f5f8ff;
   padding-left: 24px;
-  /* delikatne "przesunięcie" w prawo */
 }
 
-/* ===== Wersja mobilna — hamburger ===== */
+/* ===== Mobile version — hamburger ===== */
 
-/* Ukryty checkbox — steruje całym menu (technik bez JS) */
+/* Hidden checkbox -controls the entire menu (no JS technique) */
 .menu__toggle {
   position: absolute;
   left: -9999px;
-  /* poza ekranem, ale dostępny dla klawiatury */
 }
 
 .menu__hamburger {
   display: none;
-  /* ukryty na desktopie */
 }
 
 @media (max-width: 768px) {
@@ -99,7 +90,6 @@
     padding: 0 20px;
   }
 
-  /* Ikona hamburgera — trzy kreski */
   .menu__hamburger {
     display: inline-flex;
     flex-direction: column;
@@ -115,7 +105,6 @@
     transition: transform 0.25s ease, opacity 0.25s ease;
   }
 
-  /* Zaznaczony checkbox: ikona zamienia się w X */
   .menu__toggle:checked~.menu__hamburger span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -128,12 +117,9 @@
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Lista kategorii — zwinięta, rozwija się po kliknięciu */
   .menu__list {
     flex: 1 1 100%;
-    /* cała szerokość, pod hamburgerem */
     flex-direction: column;
-    /* kategorie jedna pod drugą */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
@@ -141,7 +127,6 @@
 
   .menu__toggle:checked~.menu__list {
     max-height: 1000px;
-    /* wystarczająco dużo na wszystkie pozycje */
   }
 
   .menu__item {
@@ -150,11 +135,10 @@
   }
 
   .menu__link {
-    text-align: left;
+    text-align: center;
     padding: 16px 0;
   }
 
-  /* Podmenu: statyczne, rozwijane dotknięciem (fokus po tapnięciu) */
   .submenu {
     position: static;
     display: none;
@@ -172,6 +156,5 @@
 
   .submenu__link {
     padding-left: 24px;
-    /* wcięcie podkategorii */
   }
 }
