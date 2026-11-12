@@ -3,24 +3,32 @@ import { useEffect, useState } from 'react';
 import Search from '../Search/Search';
 import styles from '../ProductMenu/ProductMenu.module.css';
 import ProductMenu from '../ProductMenu/ProductMenu';
-import React from 'react';
 import type { Category } from '../../types'
 
-
 export default function Header() {
-  const [categoryList, setCategory] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/category`)
-      .then((res) => {
-        if (!res.ok) throw new Error('Category not found');
-        return res.text();
-      })
-      .then((res) => JSON.parse(res))
-      .then((data) => setCategory(data))
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/api/category`);
+        if (!response.ok) throw new Error('Error retrieving categories');
+
+        const data = await response.json();
+        setCategories(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
-  function generateCategoriesFromProducts() {
+  const prepareCategoryData = () => {
     const categoryMap = new Map<string, {
       id: string[],
       name: string;
@@ -29,12 +37,13 @@ export default function Header() {
       subcategories: string[]
     }>();
 
-    categoryList.forEach(product => {
-      const subcatId = product.subcategories.map(el => el.id);
-      const categoryName = product.name;
-      const catSlugs = product.slug
-      const subcatSlugs = product.subcategories.map(el => el.slug);
-      const subcategoryName = product.subcategories.map(el => el.name);
+    categories.forEach(category => {
+      if (!category.subcategories) return;
+      const subcatId = category.subcategories.map(el => el.id);
+      const categoryName = category.name;
+      const catSlugs = category.slug;
+      const subcatSlugs = category.subcategories.map(el => el.slug);
+      const subcategoryName = category.subcategories.map(el => el.name);
 
       if (!categoryMap.has(categoryName)) {
         categoryMap.set(categoryName, {
@@ -46,45 +55,21 @@ export default function Header() {
         });
       }
 
-      categoryMap.get(categoryName)!.subcategories.push(...subcategoryName);
+      const existingCategory = categoryMap.get(categoryName)!;
+      existingCategory.subcategories.push(...subcategoryName);
     });
 
     return Array.from(categoryMap.values()).map(category => ({
       ...category,
-      subcategories: Array.from(category.subcategories)
+      subcategories: Array.from(new Set(category.subcategories)) // We remove duplicates using Set()
     }));
-  }
+  };
 
-  const catListTab = generateCategoriesFromProducts()
+  if (loading) return <p>Wczytywanie...</p>;
+  if (error) return <p>Błąd: {error}</p>;
+  if (categories.length === 0) return <p>Brak kategorii</p>;
 
-  let subcatId: string[] = []
-  let catLink = ""
-  let catSlugs = ""
-  let subcatLink: string[] = []
-  let subcatSlugsLink: string[] = []
-
-  const getCategoriesNames = (data: any, menuIdx: number) => {
-    subcatId = []
-    catLink = ""
-    catSlugs = ""
-    subcatLink = []
-    subcatSlugsLink = []
-    catLink = data[menuIdx]?.name
-    catSlugs = data[menuIdx]?.catSlug
-    if (data[menuIdx]?.subcategories) {
-      data[menuIdx].subcategories.forEach((el: string) => {
-        subcatLink.push(el)
-      })
-      data[menuIdx].subcatSlugs.forEach((el: string) => {
-        subcatSlugsLink.push(el)
-      })
-      data[menuIdx].id.forEach((el: string) => { subcatId.push(el) })
-    }
-  }
-
-  if (!categoryList) return <p>Wczytywanie...</p>;
-  if (categoryList.length === 0) return <p>Brak kategorii</p>;
-
+  const preparedCategories = prepareCategoryData();
   return (
     <header>
       <div>
@@ -107,18 +92,20 @@ export default function Header() {
         </label>
 
         <ul className={styles.menu__list}>
-          {categoryList.map((item: any, index: number) => {
-            getCategoriesNames(catListTab, index);
-            return (
-              <React.Fragment key={crypto.randomUUID()}>
-                <ProductMenu id={subcatId} catSlugs={catSlugs} subcatSlugs={subcatSlugsLink} catLink={catLink} subcatLink={subcatLink} />
-              </React.Fragment>)
-          }
-          )}
+          {preparedCategories.map((category, index) => (
+            <ProductMenu
+              key={index}
+              id={category.id}
+              catSlugs={category.catSlug}
+              subcatSlugs={category.subcatSlugs}
+              catLink={category.name}
+              subcatLink={category.subcategories}
+            />
+          ))}
           <Search />
         </ul>
       </nav>
     </header>
-  )
+  );
 }
 

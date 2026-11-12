@@ -8,7 +8,11 @@ Strona będzie dostosowana do różnych urządzeń, od desktopu po tablet i tele
 
 Full specifications of the home page and MVP are in [homepage_spec.md](docs/homepage_spec.md)
 
-Always answer in Polish language!
+**I am a budding Frontend Developer who is learning Javascript, React, Typescript and backend basics. Answer me in easy and understandable language, as if you were explaining to a teenager or a child.
+Respond in code: English
+Always Respond in chat: Polish
+Write comments in code: English
+Don't generate code, only answer for my question.**
 
 ### TECH STACK
 
