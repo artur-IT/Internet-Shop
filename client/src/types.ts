@@ -5,8 +5,8 @@ export interface CartItem {
   productId: string; // Product.id from Prisma
   slug: string; // for linking back to the product page
   name: string;
-  price: number; // price snapshot at the time of adding
-  image: string; // thumbnail for the cart preview
+  price: number;
+  image: string;
   quantity: number;
 }
 
@@ -14,3 +14,19 @@ export interface CartItem {
 export interface Cart {
   items: CartItem[];
 }
+
+// Product Menu types
+export interface Category {
+  id: string;
+  slug: string;
+  name: string;
+  subcategories: Subcategory[];
+}
+
+export interface Subcategory {
+  id: string;
+  catSlug: string;
+  slug: string;
+  name: string;
+}
+//---------------------
