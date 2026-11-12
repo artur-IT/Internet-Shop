@@ -4,20 +4,8 @@ import Search from '../Search/Search';
 import styles from '../ProductMenu/ProductMenu.module.css';
 import ProductMenu from '../ProductMenu/ProductMenu';
 import React from 'react';
+import type { Category } from '../../types'
 
-interface Category {
-  id: string,
-  slug: string,
-  name: string;
-  subcategories: Subcategory[];
-}
-
-interface Subcategory {
-  id: string;
-  catSlug: string,
-  slug: string;
-  name: string;
-}
 
 export default function Header() {
   const [categoryList, setCategory] = useState<Category[]>([]);
@@ -109,7 +97,6 @@ export default function Header() {
       <h1>Home</h1>
 
       <nav className={styles.menu} aria-label="Menu główne">
-        {/* The checkbox controls the menu -clicking on the label selects it  */}
         <input type="checkbox" id="nav-toggle" className={styles.menu__toggle} />
 
         {/* Hamburger: clicking transfers focus to the checkbox */}
@@ -123,7 +110,7 @@ export default function Header() {
           {categoryList.map((item: any, index: number) => {
             getCategoriesNames(catListTab, index);
             return (
-              <React.Fragment key={Math.random().toString(36).substring(2, 9)}>
+              <React.Fragment key={crypto.randomUUID()}>
                 <ProductMenu id={subcatId} catSlugs={catSlugs} subcatSlugs={subcatSlugsLink} catLink={catLink} subcatLink={subcatLink} />
               </React.Fragment>)
           }
