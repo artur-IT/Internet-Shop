@@ -97,3 +97,14 @@ a:hover {
 a:visited {
   color: red;
 }
+
+.cart {
+  display: flex;
+  margin: 10px 5px;
+  padding: 10px 5px;
+  background-color: lightsteelblue;
+}
+
+.cart>li {
+  margin: 0 10px;
+}
