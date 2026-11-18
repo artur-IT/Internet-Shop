@@ -33,6 +33,12 @@ createRoot(rootElement).render(
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Grupa tras chronionych */}
+          {/* <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route> */}
         </Route>
         <Route
           path="*"

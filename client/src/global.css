@@ -98,6 +98,10 @@ a:visited {
   color: red;
 }
 
+p {
+  font-size: 14px;
+}
+
 h4 {
   margin: 5px 0;
 }
