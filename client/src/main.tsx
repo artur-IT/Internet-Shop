@@ -12,6 +12,7 @@ import Category from './components/Category/Category.tsx';
 import About from './components/About/About.tsx'
 import ProductsList from './components/ProductsList/ProductsList.tsx';
 import Product from './components/Product/Product.tsx';
+import OrderHistory from './components/OrderHistory/OrderHistory.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -28,6 +29,7 @@ createRoot(rootElement).render(
           <Route path="/category/:categorySlug/:subSlug/:prodSlug" element={<Product />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order-history" element={<OrderHistory />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />

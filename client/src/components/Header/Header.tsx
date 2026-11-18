@@ -77,6 +77,7 @@ export default function Header() {
         <Link to={'/login'}>Zaloguj</Link>
         <Link to={'/contact'}>Kontakt</Link>
         <Link to={'/about'}>O nas</Link>
+        <Link to={'/order-history'}>Historia zamówień</Link>
       </div>
 
       <h1>Home</h1>

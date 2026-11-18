@@ -97,3 +97,35 @@ a:hover {
 a:visited {
   color: red;
 }
+
+h4 {
+  margin: 5px 0;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: lightsteelblue;
+}
+
+.cart>li {
+  display: flex;
+  padding: 2px 10px;
+}
+
+.order-history {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-history>li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: bisque;
+}
+
+.order-history>li>p {
+  margin: 4px 0;
+}
