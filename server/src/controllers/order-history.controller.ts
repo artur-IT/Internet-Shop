@@ -1,9 +1,8 @@
 import type {Request, Response} from 'express';
-import {cart} from '../../prisma/seedCart';
+import {orderHistory} from '../../prisma/seedOrderHistory';
 
 export function getOrderHistory(_req: Request, res: Response) {
-  const history = cart;
+  const history = orderHistory;
 
-  // return res.json(history);
-  return res.send('Historia zamówień!');
+  return res.json(history);
 }

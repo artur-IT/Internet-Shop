@@ -27,3 +27,20 @@ export interface Cart {
   price: number;
   thumbnailPath?: string;
 }
+
+export interface OrderHistory {
+  id: string;
+  userId: string;
+  status: string;
+  totalAmount: number;
+  items: [
+    {
+      productId: string;
+      productName: string;
+      price: number;
+      quantity: number;
+      thumbnailPath: string;
+    },
+  ];
+  orderDate: Date;
+}
