@@ -5,8 +5,6 @@ import {User} from '../../prisma/seedUser';
 export const login = (req: Request, res: Response) => {
   const {login, password} = req.body;
 
-  // console.log('Login request received:', req.body);
-
   if (!login || !password) {
     return res.status(400).json({
       message: 'Proszę podać login i hasło',
@@ -24,8 +22,6 @@ export const login = (req: Request, res: Response) => {
       },
     });
   }
-
-  console.log('Login failed - invalid credentials');
 
   return res.status(401).json({
     message: 'Nieprawidłowe dane logowania',

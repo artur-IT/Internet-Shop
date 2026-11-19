@@ -6,6 +6,7 @@ import searchRoutes from './routes/search.routes';
 import cartRoutes from './routes/cart.routes';
 import orderRoutes from './routes/order-history.routes';
 import authRoutes from './routes/auth.routes';
+import ordersRoutes from './routes/order-history.routes';
 
 const app = express();
 require('dotenv').config();
@@ -26,6 +27,7 @@ app.use('/api/search', searchRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/order-history', orderRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/orders', ordersRoutes);
 
 app.listen(serverPort, () => {
   console.log(`Server is running on port ${serverPort}`);

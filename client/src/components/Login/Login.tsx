@@ -43,7 +43,7 @@ export default function Login() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <input
         type="email"
-        placeholder="login"
+        placeholder="email"
         value={login}
         onChange={(e) => setLogin(e.target.value)}
         required

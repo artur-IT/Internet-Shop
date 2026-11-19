@@ -6,3 +6,7 @@ export function getOrderHistory(_req: Request, res: Response) {
 
   return res.json(history);
 }
+
+export function saveToOrderHistory(_req: Request, res: Response) {
+  console.log('z backendu: ', _req.body);
+}

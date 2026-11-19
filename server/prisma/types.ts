@@ -25,6 +25,8 @@ export interface Cart {
   productName: string;
   amount: number;
   price: number;
+  orderDate: string;
+  totalCartPrice: number;
   thumbnailPath?: string;
 }
 

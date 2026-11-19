@@ -14,6 +14,22 @@ export default function Cart() {
     setSummary(result)
   }
 
+  const saveOrder = async () => {
+    await fetch('http://localhost:3001/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cart: cart
+      })
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Order not saved!");
+        return res.json();
+      })
+  }
+
   useEffect(() => {
     fetch('http://localhost:3001/api/cart')
       .then((res) => {
@@ -21,6 +37,7 @@ export default function Cart() {
         return res.json();
       })
       .then(data => {
+        console.log(data);
         setCart(data)
         const prices = data?.map((el: CartType) => el.price)
         setCartPrices(prices)
@@ -52,7 +69,7 @@ export default function Cart() {
       }
       )}
       <p>Razem: {summary} zł</p>
-      <button disabled={summary ? false : true} onClick={() => alert("Dzękujemy za zakupy. Moduł płatności nie został dodany.")}>Zapłać</button>
+      <button disabled={summary ? false : true} onClick={saveOrder}>Zapłać</button>
     </div>
   );
 }
