@@ -20,16 +20,6 @@ export interface Product {
   isHit?: boolean;
 }
 
-export interface Cart {
-  idOrder: string;
-  productName: string;
-  amount: number;
-  price: number;
-  orderDate: string;
-  totalCartPrice: number;
-  thumbnailPath?: string;
-}
-
 export interface OrderHistory {
   id: string;
   userId: string;

@@ -1,27 +1,42 @@
 import { useEffect, useState } from "react";
 import NotFound from "../NotFound";
-import type { Cart as CartType } from '../../../../server/prisma/types'
+import type { CartItem as CartTypes } from '../../types'
 import CartItem from "../CartItem/CartItem";
 
 export default function Cart() {
-  const [cart, setCart] = useState<CartType[]>()
-  const [cartPrices, setCartPrices] = useState<number[]>([])
-  const [summary, setSummary] = useState<number>()
+  const [cart, setCart] = useState<CartTypes[]>()
+  const [summary, setSummary] = useState<number>(0)
   const [error, setError] = useState(false)
 
-  const calculateSum = (newPrices: number[]) => {
-    const result = newPrices?.reduce((accu, currenValue) => accu + currenValue, 0)
-    setSummary(result)
+  const calculateSum = () => {
+    const result = cart?.reduce((accu, currenValue) => accu + currenValue.totalPrice, 0)
+    setSummary(Number(result))
+  }
+
+  const calculateProductPrice = (newQuantity: number, position: number) => {
+    const temp = cart
+    temp?.forEach((el: CartTypes, index: number) => {
+      if (index === position) {
+        el.quantity = newQuantity;
+        el.totalPrice = el.price * el.quantity;
+      }
+    })
+    setCart(temp)
+    calculateSum()
   }
 
   const saveOrder = async () => {
+    let finallyCart: {}[] = []
+    cart?.forEach(el => el.quantity !== 0 ? finallyCart.push(el) : null)
+
     await fetch('http://localhost:3001/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        cart: cart
+        cart: finallyCart,
+        cartValue: summary
       })
     })
       .then((res) => {
@@ -37,11 +52,14 @@ export default function Cart() {
         return res.json();
       })
       .then(data => {
-        console.log(data);
-        setCart(data)
-        const prices = data?.map((el: CartType) => el.price)
-        setCartPrices(prices)
-        setSummary(prices.reduce((accu: number, currenValue: number) => accu + currenValue, 0))
+        let sum = 0
+        data?.forEach((el: CartTypes) => {
+          el.totalPrice = el.price * el.quantity;
+          sum += el.totalPrice
+          return el
+        })
+        setSummary(sum)
+        setCart(data);
       })
       .catch((err) => {
         setError(true);
@@ -49,22 +67,22 @@ export default function Cart() {
       });
   }, [])
 
-  if (error) return <NotFound info="Nie ma takiego produktu." />;
+  if (error) return <NotFound info="Nie ma produktów w koszyku." />;
   if (!error && !cart) return <p>Wczytywanie...</p>;
 
   return (
     <div>
       <h1>Cart</h1>
-      {cart?.map((el: CartType, index: number) => {
+      {cart?.map((el: CartTypes, index: number) => {
         return (
           <CartItem
             key={index}
             index={index}
-            productName={el.productName}
+            name={el.productName}
             price={el.price}
-            cartPrices={cartPrices}
-            setCartPrices={setCartPrices}
-            calculate={calculateSum} />
+            quantity={el.quantity}
+            totalPrice={el.totalPrice}
+            calculateProductPrice={calculateProductPrice} />
         )
       }
       )}
