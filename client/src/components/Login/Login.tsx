@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [login, setLogin] = useState('');
+  const [isLogged, setIsLogged] = useState(false)
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -26,8 +24,7 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("Udane logowanie!");
-        navigate('/cart');
+        setIsLogged(true)
       } else {
         setError(data.message || 'Nieprawidłowy email lub hasło');
       }
@@ -36,6 +33,8 @@ export default function Login() {
       console.error(err);
     }
   };
+
+  if (isLogged) return <p>Użytkownik zalogowany.</p>
 
   return (
     <form onSubmit={handleSubmit}>
