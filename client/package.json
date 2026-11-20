@@ -28,6 +28,7 @@
     "eslint-plugin-jest-dom": "^5.10.2",
     "eslint-plugin-testing-library": "^7.16.2",
     "typescript": "~6.0.3",
-    "vite": "^8.3.8"
+    "vite": "^8.3.8",
+    "vite-tsconfig-paths": "^6.1.1"
   }
 }
