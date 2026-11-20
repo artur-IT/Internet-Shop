@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import NotFound from "../NotFound";
+import NotFound from "../../components/NotFound";
 import type { CartItem as CartTypes } from '../../types'
-import CartItem from "../CartItem/CartItem";
+import CartItem from "../../components/CartItem/CartItem";
 
 export default function Cart() {
   const [cart, setCart] = useState<CartTypes[]>()
