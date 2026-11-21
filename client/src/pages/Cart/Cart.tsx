@@ -36,7 +36,8 @@ export default function Cart() {
       },
       body: JSON.stringify({
         cart: finallyCart,
-        cartValue: summary
+        cartValue: summary,
+        orderDate: new Date().toLocaleString("pl-PL")
       })
     })
       .then((res) => {
