@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NotFound from "../NotFound";
+import NotFound from "../../components/NotFound";
 
 type ProductDetails = {
   id: string;

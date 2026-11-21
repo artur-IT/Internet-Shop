@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import NotFound from "../NotFound";
+import NotFound from "../../components/NotFound";
 
 type OrderItem = {
   productName: string,

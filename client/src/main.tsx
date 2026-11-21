@@ -2,17 +2,17 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './global.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home.tsx';
-import Contact from './components/Contact/Contact.tsx';
-import NotFound from './components/NotFound.tsx';
-import Login from './components/Login/Login.tsx';
-import Register from './components/Register/Register.tsx';
-import Cart from './components/Cart/Cart.tsx';
-import Category from './components/Category/Category.tsx';
-import About from './components/About/About.tsx'
-import ProductsList from './components/ProductsList/ProductsList.tsx';
-import Product from './components/Product/Product.tsx';
-import OrderHistory from './components/OrderHistory/OrderHistory.tsx';
+import Home from '@/pages/Home/Home.tsx';
+import Contact from '@/pages/Contact/Contact.tsx';
+import NotFound from '@components/NotFound.tsx';
+import Login from '@/pages/Login/Login.tsx';
+import Register from '@components/Register/Register.tsx';
+import Cart from '@/pages/Cart/Cart.tsx';
+import Category from '@components/Category/Category.tsx';
+import About from '@/pages/About/About.tsx'
+import ProductsList from '@/pages/ProductsList/ProductsList.tsx';
+import Product from '@/pages/Product/Product.tsx';
+import OrderHistory from '@/pages/OrderHistory/OrderHistory.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -33,6 +33,12 @@ createRoot(rootElement).render(
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Grupa tras chronionych */}
+          {/* <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route> */}
         </Route>
         <Route
           path="*"

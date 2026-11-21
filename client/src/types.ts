@@ -1,18 +1,11 @@
-// A single line in the cart, storing a snapshot of the product
-// at the moment it was added (name/price/image won't change
-// even if the product data changes later in the catalog)
 export interface CartItem {
-  productId: string; // Product.id from Prisma
-  slug: string; // for linking back to the product page
-  name: string;
+  productId: string;
+  slug: string;
+  productName: string;
   price: number;
-  image: string;
   quantity: number;
-}
-
-// The whole cart, persisted as JSON in localStorage
-export interface Cart {
-  items: CartItem[];
+  totalPrice: number;
+  thumbnailPath?: string;
 }
 
 // Product Menu types

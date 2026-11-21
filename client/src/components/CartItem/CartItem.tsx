@@ -1,34 +1,32 @@
-import { useState } from "react"
-
 type Props = {
   index: number,
-  productName: string,
+  name: string,
   price: number,
-  cartPrices: number[],
-  setCartPrices: (e: number[]) => void,
-  calculate: (e: number[]) => void
+  quantity: number,
+  totalPrice: number
+  calculateProductPrice: (a: number, b: number) => void
 }
 
-export default function CartItem({ index, productName, price, cartPrices, setCartPrices, calculate }: Props) {
-  const [amount, setAmount] = useState(1)
-
+export default function CartItem({ index, name, price, quantity, totalPrice, calculateProductPrice }: Props) {
   const handlePrice = (value: string) => {
-    const newAmount = Number(value)
-    setAmount(newAmount)
-
-    const newPrices = [...cartPrices]
-    newPrices[index] = newAmount * price
-    setCartPrices(newPrices)
-    calculate(newPrices)
+    const newQuantity = Number(value)
+    calculateProductPrice(newQuantity, index)
   }
 
   return (
     <ul className='cart'>
-      <li>{productName}</li>
+      <li>{name}</li>
       <li>Wartość: {price} zł</li>
       <li>Ilość: </li>
-      <input type="number" min="0" max="5" defaultValue={amount} onChange={(e) => handlePrice(e.target.value)}></input> szt.
-      <li>Cena: {price * amount} zł</li>
+      <input
+        type="number"
+        min="0"
+        max="5"
+        defaultValue={quantity}
+        onChange={(e) => handlePrice(e.target.value)}
+      ></input> szt.
+      <li>Cena: {totalPrice} zł</li>
     </ul>
   )
 }
+
