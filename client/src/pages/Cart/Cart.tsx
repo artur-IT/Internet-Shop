@@ -44,6 +44,7 @@ export default function Cart() {
         if (!res.ok) throw new Error("Order not saved!");
         return res.json();
       })
+      .catch((err) => console.log("Błąd zapisu do pliku historii zamówień ", err))
   }
 
   useEffect(() => {

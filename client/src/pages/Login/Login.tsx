@@ -16,7 +16,7 @@ export default function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          login: login,
+          email: login,
           password: password
         })
       });
@@ -24,6 +24,7 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok) {
+        localStorage.setItem('token', data.token);
         setIsLogged(true)
       } else {
         setError(data.message || 'Nieprawidłowy email lub hasło');
