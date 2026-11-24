@@ -8,27 +8,26 @@
   - Sprawdź, czy użytkownik jest zapisany w bazie danych
 
 - **[ X ] Test dla `POST /api/auth/login`**:
-  - Sprawdź, czy poprawne dane logowania zwracają token JWT
-  - Sprawdź, czy niepoprawne dane logowania zwracają błąd
+  - ~~Sprawdź, czy poprawne dane logowania zwracają token JWT~~
+  - ~~Sprawdź, czy niepoprawne dane logowania zwracają błąd~~
   - Sprawdź, czy token jest poprawny i można go użyć do autoryzacji
 
-- [ ] **Test dla `GET /api/products`**:
-  - Sprawdź, czy lista produktów jest zwracana poprawnie
-  - Sprawdź, czy dane są z bazy danych
+- [ X ]~~**Test dla `GET /api/products`**:~~
+  - ~~Sprawdź, czy lista produktów jest zwracana poprawnie~~
 
-- [ ] **Test dla `GET /api/products/:slug`**:
-  - Sprawdź, czy szczegółowy produkt jest zwracany poprawnie
-  - Sprawdź, czy nieistniejący slug zwraca błąd 404
+- [ X ] ~~**Test dla `GET /api/products/:slug`**:~~
+  - ~~Sprawdź, czy szczegółowy produkt jest zwracany poprawnie~~
+  - ~~Sprawdź, czy nieistniejący slug zwraca błąd~~
 
-- [ ] **Test dla `GET /api/category`**:
-  - Sprawdź, czy lista kategorii jest zwracana poprawnie
+- [ X ] ~~**Test dla `GET /api/category`**:~~
+  - ~~Sprawdź, czy lista kategorii jest zwracana poprawnie~~
 
-- [ ] **Test dla `GET /api/category/:slug`**:
-  - Sprawdź, czy produkty z danej kategorii są zwracane poprawnie
-  - Sprawdź, czy nieistniejąca kategoria zwraca błąd
+- [ X ] ~~**Test dla `GET /api/category/:slug`**:~~
+  - ~~Sprawdź, czy produkty z danej kategorii są zwracane poprawnie~~
+  - ~~Sprawdź, czy nieistniejąca kategoria zwraca błąd~~
 
-- [ X ] **Test dla `GET /api/health`**:
-  - Sprawdź, czy endpoint zwraca status 200 i poprawną wiadomość
+- [ X ] ~~**Test dla `GET /api/health`**:~~
+  - ~~Sprawdź, czy endpoint zwraca status 200 i poprawną wiadomość~~
 
 ### 🧪 Testy UI (React Testing Library)
 
