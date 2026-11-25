@@ -22,7 +22,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/category', categoryRoutes);
-app.use('/api/product', productsRoutes);
+app.use('/api/products', productsRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/order-history', orderRoutes);

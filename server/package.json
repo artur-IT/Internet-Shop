@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:server": "vitest run src/__tests__",
     "dev": "tsx src/server.ts"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "typescript": "^7.0.2"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/jsonwebtoken": "^9.0.10",
+    "vitest": "^5.1.1"
   }
 }

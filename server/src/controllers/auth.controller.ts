@@ -3,22 +3,22 @@ import jwt from 'jsonwebtoken';
 import {User} from '../../prisma/seedUser';
 
 export const login = (req: Request, res: Response) => {
-  const {login, password} = req.body;
+  const {email, password} = req.body;
 
-  if (!login || !password) {
+  if (!email || !password) {
     return res.status(400).json({
-      message: 'Proszę podać login i hasło',
+      message: 'Proszę podać email i hasło',
     });
   }
 
-  if (login === User.login && password === User.password) {
-    // const token = jwt.sign({login}, 'secret_key', {expiresIn: '1h'});
+  if (email === User.email && password === User.password) {
+    const token = jwt.sign({login}, 'secret_key', {expiresIn: '1h'});
 
     return res.json({
       message: 'Zalogowano pomyślnie',
-      // token,
+      token,
       userData: {
-        login: login,
+        email: login,
       },
     });
   }

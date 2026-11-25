@@ -1,4 +1,4 @@
 export const User = {
-  login: 'art@cat.pl',
+  email: 'art@cat.pl',
   password: 'cat',
 };
