@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --parallel -r dev",
-    "test": "cd server && pnpm run test:server",
+    "test": "cd server && pnpm run test:server && cd.. && cd client && pnpm run test:client",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

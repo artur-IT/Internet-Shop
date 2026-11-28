@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import NotFound from "../../components/NotFound";
 import type { CartItem as CartTypes } from '../../types'
 import CartItem from "../../components/CartItem/CartItem";
 
@@ -69,12 +68,12 @@ export default function Cart() {
       });
   }, [])
 
-  if (error) return <NotFound info="Nie ma produktów w koszyku." />;
+  if (error) return <p>Nie ma produktów w koszyku. </p>;
   if (!error && !cart) return <p>Wczytywanie...</p>;
 
   return (
     <div>
-      <h1>Cart</h1>
+      <h1>Koszyk</h1>
       {cart?.map((el: CartTypes, index: number) => {
         return (
           <CartItem

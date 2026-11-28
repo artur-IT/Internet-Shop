@@ -2,17 +2,17 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './global.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from '@/pages/Home/Home.tsx';
-import Contact from '@/pages/Contact/Contact.tsx';
-import NotFound from '@components/NotFound.tsx';
-import Login from '@/pages/Login/Login.tsx';
-import Register from '@components/Register/Register.tsx';
-import Cart from '@/pages/Cart/Cart.tsx';
-import Category from '@components/Category/Category.tsx';
-import About from '@/pages/About/About.tsx'
-import ProductsList from '@/pages/ProductsList/ProductsList.tsx';
-import Product from '@/pages/Product/Product.tsx';
-import OrderHistory from '@/pages/OrderHistory/OrderHistory.tsx';
+import Home from './pages/Home/Home.tsx';
+import Contact from './pages/Contact/Contact.tsx';
+import NotFound from './components/NotFound.tsx';
+import Login from './pages/Login/Login.tsx';
+import Register from './components/Register/Register.tsx';
+import Cart from './pages/Cart/Cart.tsx';
+import Category from './components/Category/Category.tsx';
+import About from './pages/About/About.tsx'
+import ProductsList from './pages/ProductsList/ProductsList.tsx';
+import Product from './pages/Product/Product.tsx';
+import OrderHistory from './pages/OrderHistory/OrderHistory.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

@@ -19,7 +19,7 @@ export default function Product() {
   const [product, setProduct] = useState<ProductDetails | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/product/${prodSlug}`)
+    fetch(`http://localhost:3001/api/products/${prodSlug}`)
       .then((res) => {
         if (!res.ok) throw new Error("Product not found");
         return res.json();
@@ -32,7 +32,7 @@ export default function Product() {
   }, [prodSlug]);
 
   if (error) return <NotFound info="Nie ma takiego produktu." />;
-  if (!error && !product) return <p>Wczytywanie...</p>;
+  if (!product) return <p>Wczytywanie...</p>;
 
   return (
     <ul className='product' id={product?.id}>
